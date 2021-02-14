@@ -1,0 +1,250 @@
+body {
+  font-family: "Verdana",sans-serif;
+  font-size: 100%;
+
+}
+
+.theHeader {
+  grid-area: header;
+  text-align: center;
+  background-color: orange;
+  border: 0.2em solid black;
+}
+.menu1 { grid-area: menu-1; border-left: 0.2em solid black; }
+.menu2 { grid-area: menu-2; }
+.menu3 { grid-area: menu-3; }
+.menu4 { grid-area: menu-4; }
+.menu5 { grid-area: menu-5; }
+.menu6 { grid-area: menu-6; }
+.menu7 { grid-area: menu-7; border-right: 0.2em solid black;}
+[class*="menu"] { text-align: center; background-color: darkorange; border-bottom: 0.2em solid black; padding: 0.5em; overflow:hidden;}
+.theMain { grid-area: main; line-height: 130%; overflow: auto;}
+
+.theFooter {
+  grid-area: footer;
+  font-size: 70%;
+  background-color: white;
+  padding: 0.1em;
+  border-top: 0.15em dashed black;
+  width: 100%;
+  margin-bottom: 0;
+  position: fixed;
+  bottom: 0;
+  height: 1.5em; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+   'header header header header header header header'
+   'menu-1 menu-2 menu-3 menu-4 menu-5 menu-6 menu-7'
+   'main main main main main main main'
+   'footer footer footer footer footer footer footer';
+  padding: 0em;
+  margin: 0em;
+  grid-template-columns: 14% 14% 14% 14% 14% 14% 16%;
+
+}
+
+div.section {
+  margin: 2% 5% 0% 10%;
+}
+
+div.prima{
+  border-bottom: 0.2em solid black;
+}
+
+div.seconda{
+  padding-top: 0em;
+  margin-top: 0em;
+  margin-bottom:5%;
+
+}
+/* inutili, tabelle non più usate
+table.libri {
+    border: solid black 0.2em;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-left: 1em;
+
+}
+
+th {
+    margin: 0;
+    font-weight: bold;
+    line-height: 1.5;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: left;
+    border-bottom: solid black 0.1em;
+}
+
+td {
+    margin: 0;
+    vertical-align: middle;
+    padding-left: 1em;
+    padding-right: 1em;
+    line-height: 1.5;
+    text-align: left;
+
+} */
+/*Tabelle coi div*/
+div.libri {
+  border: solid black 0.2em;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+div.row {
+  display: table-row;
+  width: 100%;
+}
+
+div.row:nth-child(odd) {
+  background-color: lightgrey;
+}
+
+div.head {
+  font-weight:bold;
+  font-size: 110%;
+  border-bottom: solid black 0.1em;
+  background-color: wheat;
+}
+
+div.row > div {
+  display: table-cell;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding:0.3em;
+  vertical-align: middle;
+  text-align:left;
+}
+
+div.id {
+  width:10%;
+}
+
+div.title {
+  width: 30%;
+}
+
+div.author {
+  width: 22.5%;
+}
+
+div.action {
+  width: 22.5%;
+}
+
+div.alert {
+  width: 15%;
+  color:red;
+}
+
+/*per seconda tabella*/
+div.id2 {
+  width:10%;
+}
+
+div.title2 {
+  width: 40%;
+}
+
+div.author2 {
+  width: 30%;
+}
+
+div.action2 {
+  width: 20%;
+}
+
+a:link { color: darkblue; }
+a:visited {color: darkblue;}
+a:hover { background: lightcoral; }
+
+/*Media print*/
+@media print {
+  body{
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+  background: white;
+  font-size: 12pt;}
+
+  a {
+  text-decoration : underline;
+  color : blue;
+}
+
+ div.theMain a::after { content: "(" attr(href) ")" }
+
+}
+
+/*Stile con menù a sinistra per schermo che si stringe*/
+@media screen and (max-width: 800px){
+
+  body {
+    font-size: 2vw;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+     'header header'
+     'menu-1 main'
+     'menu-2 main'
+     'menu-3 main'
+     'menu-4 main'
+     'menu-5 main'
+     'menu-6 main'
+     'menu-7 main'
+     'menu-8 main'
+     'footer footer';
+    padding: 0em;
+    margin: 0em;
+    grid-template-columns: 15% 85%;
+    grid-template-rows: auto 3em 3em 3em 3em 5em 5em 3em auto auto;
+
+  }
+
+  [class*="menu"]{border-right: 0.2em solid black; border-left: 0.2em solid black; }
+
+  .theMain {font-size: 120%;}
+  .bottone {
+    font-size:80%;
+  }
+
+}
+
+/*Schermo ancora più piccolo: cambio layout*/
+@media screen and (max-width: 600px){
+
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+     'header'
+     'menu-1'
+     'menu-2'
+     'menu-3'
+     'menu-4'
+     'menu-5'
+     'menu-6'
+     'menu-7'
+     'main'
+     'footer';
+    padding: 0em;
+    margin: 0em;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+
+  [class*="menu"]{border-right: 0.2em solid black; border-left: 0.2em solid black; }
+
+  .theMain {font-size: 140%;}
+
+  .action {
+    font-size:80%;
+  }
+
+
+}
